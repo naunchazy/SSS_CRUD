@@ -9,5 +9,6 @@
 <body>
 <!-- http://localhost/sss/validate -->
 <h2>登录成功!欢迎您，${username}</h2>
+<a href="returnLogin">返回登录页面</a>
 </body>
 </html>

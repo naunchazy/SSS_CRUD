@@ -8,6 +8,9 @@
 </head>
 <body>
 <!-- http://localhost/sss/validate -->
-<h2>登录失败！请检查您的用户名：${username}，密码：${password}</h2>
+<h2>登录失败！</h2>
+<h3>请检查您的用户名:${username}，密码:${password}</h3>
+<br>
+<a href="returnLogin">返回登录页面</a>
 </body>
 </html>

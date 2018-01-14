@@ -1,9 +1,9 @@
 package com.exercise.pojo.po;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Component;
 
 
-@Repository
+//@Component
 public class User {
 
 	private Integer id;

@@ -23,7 +23,6 @@ import com.exercise.pojo.po.User;
 public class UserDaoImpl implements IUserDao{
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
-	
 	//根据登录的用户，查询是否有该用户
 	@Override
 	public List<User> selectUser(String username,String password) {
