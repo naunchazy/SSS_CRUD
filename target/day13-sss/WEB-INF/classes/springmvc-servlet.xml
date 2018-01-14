@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="
+    	http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+    	http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.3.xsd
+    	http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+        ">
+     
+    <!-- 扫描controller-->
+    <context:component-scan base-package="com.exercise"/>
+    <!-- Controller层注解@ResponseBody和@RequestMapping需要 -->
+    <mvc:annotation-driven />
+    
+    <!-- 视图解析器 -->
+    <!--  -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    	<property name="prefix" value="/WEB-INF/jsps/"/><!--注意要加/,不然前缀会和组合的部分直接连接在一起-->
+    	<property name="suffix" value=".jsp"/>
+    </bean>
+	<!-- location就是指本地工程中的静态资源的位置 -->
+	<!-- mapping就是指URL地址中的映射 -->
+	<mvc:resources location="/js/" mapping="/js/**"/>
+	
+ <!-- <import resource="classpath:springmvc-dao.xml"/> -->
+ 	<context:property-placeholder location="classpath:db.properties"/>
+	<context:component-scan base-package="com.exercise"/>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${driverClass}"/>
+		<property name="jdbcUrl" value="${jdbcUrl}"/>
+		<property name="user" value="${user}"/>
+		<property name="password" value="${password}"/>
+	</bean>
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" >
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+</beans>
